@@ -27,8 +27,11 @@ namespace cw7
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication("AuthenticationBasic")
-                .AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("AuthenticationBasic", null);
+            services.AddAuthentication(JwtBearerDefaults.AutheticationScheme)
+                .AddJwtBearer(Options =>
+                {
+
+                });
 
             services.AddControllers()
                 .AddXmlSerializerFormatters();
